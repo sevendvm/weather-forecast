@@ -1,0 +1,33 @@
+.currentConditions {
+    width: 400px;
+    /* height: 200px; */
+    margin: auto;
+    /* display: inline-flex; */
+    /* background-color: lavender; */
+    background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+    border-radius: 20px;
+    border: solid;
+    border-color: blue;
+    border-width: 2px;
+    padding: 10px;
+    text-align: center;
+    /* font-family: 'Open Sans', sans-serif; */
+}
+
+.icon_and_temp{
+    /* width: 40%; */
+    margin: 0 auto;
+    /* text-align: center; */
+}
+
+#currentCity{  
+    font-size: x-large;
+}
+
+#currentTemperature{
+    font-size: 3.5em;
+}
+
+#additional_parameters{
+    display: none;
+}

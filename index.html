@@ -1,30 +1,79 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Погода в Энгельсе</title>
+    <title>Погода</title>
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div class="currentConditions">
-        <div id="currentCity"></div>
-        <div id="currentStateRegion"></div>
-        <div class="icon_and_temp">
-            <span id="currentWeatherIcon"></span>
-            <div id="currentTemperature"><span id="currentTemperatureValue"></span> &#176C</div>
-            <div id="currentTemperatureFeelsLike">Ощущается как: <span id="currentTemperatureFeelsLikeValue"></span> &#176C</div>    
-        </div>
-        <div id="additional_parameters">
-            <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue"></span> %</div>
-            <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue"></span> гПа</div>
-            <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue"></span> м/с</div>
-            <div id="currentVisibility">Видимость: <span id="currentVisibilityValue"></span> км</div>
-            <div id="currentUVI">УФ индекс: <span id="currentUVIValue"></span></div>
-        </div>
+    <div class="weatherWidget">
+            <div class="currentConditions" style="display: none">
+                <div id="currentCity"></div>
+                <div id="currentStateRegion"></div>
+                <div class="icon_and_temp">
+                    <span id="currentWeatherIcon"></span>
+                    <div id="currentTemperature"><span id="currentTemperatureValue"></span> &#176C</div>
+                    <div id="currentTemperatureFeelsLike">Ощущается как: <span id="currentTemperatureFeelsLikeValue"></span> &#176C</div>
+                </div>
+                <div id="additional_parameters">
+                    <hr>
+                    <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue"></span> %</div>
+                    <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue"></span> гПа</div>
+                    <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue"></span> м/с</div>
+                    <div id="currentVisibility">Видимость: <span id="currentVisibilityValue"></span> км</div>
+                    <div id="currentUVI">УФ индекс: <span id="currentUVIValue"></span></div>
+                </div>
+            </div>
+            <div class="currentConditions_placeholder" style="min-width: 550px; min-height: 231px;">
+                <p>ПОЖАЛУСТО, ПАДОЖДИТЕ</p>
+                <p>ЗАГРУЖОВЫВАВЫЮ ДАТУ</p>
+                <p>.....</p>
+            </div>
+            <hr>
+            <div class="nextDays">
+                <div class="nextDay" id="day1"  style="display: none">
+                    <span class="dayDate" id="day1Date"></span>
+                    <img id="day1Icon" src="">
+                    <br><span id="day1MinTemp"></span> &#176C..<span id="day1MaxTemp"></span> &#176C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ПЛЕАЗЕ</div>
+                <hr>
+                <div class="nextDay" id="day2" style="display: none">
+                    <span class="dayDate" id="day2Date"></span>
+                    <img id="day2Icon" src="">
+                    <br><span id="day2MinTemp"></span> &#176C..<span id="day2MaxTemp"></span> &#176C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ВАЙТ</div>
+                <hr>
+                <div class="nextDay" id="day3"  style="display: none">
+                    <span class="dayDate" id="day3Date"></span>
+                    <img id="day3Icon" src="">
+                    <br><span id="day3MinTemp"></span> &#176C..<span id="day3MaxTemp"></span> &#176C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ЛОАДИНГ</div>
+                <hr>
+                <div class="nextDay" id="day4" style="display: none">
+                    <span class="dayDate" id="day4Date"></span>
+                    <img id="day4Icon" src="">
+                    <br><span id="day4MinTemp"></span> &#176C..<span id="day4MaxTemp"></span> &#176C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ДАТА</div>
+                <hr>
+                <div class="nextDay" id="day5" style="display: none">
+                    <span class="dayDate" id="day5Date"></span>
+                    <img id="day5Icon" src="">
+                    <br><span id="day5MinTemp"></span> &#176C..<span id="day5MaxTemp"></span> &#176C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">.........</div>
+            </div>
+        
     </div>
 </body>
+
 </html>

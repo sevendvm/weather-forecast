@@ -1,23 +1,45 @@
-.currentConditions {
-    width: 400px;
-    /* height: 200px; */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    
+    100% {
+      opacity: 1;
+    }
+  }
+
+@keyframes moveIn {
+    from {
+        transform: translate(0, 100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0%);
+        opacity: 1;
+    }
+}
+
+
+.weatherWidget {
+    width: 550px;
     margin: auto;
-    /* display: inline-flex; */
-    /* background-color: lavender; */
     background: linear-gradient(45deg, #EECFBA, #C5DDE8);
     border-radius: 20px;
-    border: solid;
-    border-color: blue;
-    border-width: 2px;
     padding: 10px;
     text-align: center;
     /* font-family: 'Open Sans', sans-serif; */
+    box-shadow: 0px 8px 20px 0px darkslategrey;
+    text-shadow: 1px 1px 3px floralwhite;
+    
+}
+
+.currentConditions {
+    animation: fadeIn 1s linear 0s;
 }
 
 .icon_and_temp{
-    /* width: 40%; */
     margin: 0 auto;
-    /* text-align: center; */
 }
 
 #currentCity{  
@@ -30,4 +52,30 @@
 
 #additional_parameters{
     display: none;
+}
+
+.nextDays{
+    display: inline-flex;
+    overflow: hidden;
+} 
+
+.nextDay{
+    padding: 5px;
+    opacity: 0;
+}
+
+#day1{ 
+    animation: moveIn 0.8s ease-in-out forwards;
+}
+#day2{
+    animation: moveIn 0.8s 0.2s ease-in-out forwards;
+}
+#day3{
+    animation: moveIn 0.8s 0.4s ease-in-out forwards;
+}
+#day4{
+    animation: moveIn 0.8s 0.6s ease-in-out forwards;
+}
+#day5{
+    animation: moveIn 0.8s 0.8s ease-in-out forwards;
 }

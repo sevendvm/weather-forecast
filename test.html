@@ -1,75 +1,84 @@
-<html lang="ru"><head>
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Погода</title>
-    <script src="./script.js"></script>
+    <!-- <script src="./script.js"></script> -->
     <link rel="stylesheet" href="./style.css">
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&amp;display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet"> -->
 </head>
 
 <body>
     <div class="weatherWidget">
-    <div class="currentConditions" style="display: none;">
-        <div id="currentCity">Энгельс</div>
-        <div id="currentStateRegion">Россия, Саратовская область</div>
-        <div class="icon_and_temp">
-            <span id="currentWeatherIcon"><img src="http://openweathermap.org/img/wn/01n@2x.png"></span>
-            <div id="currentTemperature"><span id="currentTemperatureValue">-7</span> °C</div>
-            <div id="currentTemperatureFeelsLike">Ощущается как: <span id="currentTemperatureFeelsLikeValue">-11</span> °C</div>
-        </div>
-        <div id="additional_parameters">
-            <hr>
-            <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue">47</span> %</div>
-            <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue">1040</span> гПа</div>
-            <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue">0.89</span> м/с</div>
-            <div id="currentVisibility">Видимость: <span id="currentVisibilityValue">10</span> км</div>
-            <div id="currentUVI">УФ индекс: <span id="currentUVIValue">0</span></div>
-        </div>
-    </div>
-    <div class="currentConditions_placeholder" style="min-width: 550px; min-height: 231px;">
-        <p>ПЛЕАЗЕ ВАЙТ,</p>
-        <p>ЛОАДИНГ ДАТА</p>
-        <p>.....</p>
-    </div>
-        <hr>
-        <div class="nextDays">
-            <div class="nextDay" id="day1" style="display: none;>
-                <span class="dayDate" id="day1Date">ср, 9 дек.</span>
-                <img id="day1Icon" src="http://openweathermap.org/img/wn/01d.png">
-                <br><span id="day1MinTemp">-8</span> °C..<span id="day1MaxTemp">-6</span> °C
+            <div class="currentConditions" style="">
+                <div class="mainParameters">
+                    <div id="currentCity">undefined</div>
+                    <div id="currentStateRegion">Россия, Красноярский край</div>
+                    <div class="icon_and_temp">
+                        <span id="currentWeatherIcon"><img src="http://openweathermap.org/img/wn/04n@2x.png"></span>
+                        <div id="currentTemperature"><span id="currentTemperatureValue">-38</span> °C</div>
+                        <div id="currentTemperatureFeelsLike">Ощущается как: <span id="currentTemperatureFeelsLikeValue">-43</span> °C</div>
+                    </div>
+                </div>
+                <div id="additional_parameters">
+                    <hr>
+                    <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue">83</span> %</div>
+                    <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue">1035</span> гПа</div>
+                    <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue">1.34</span> м/с</div>
+                    <div id="currentVisibility">Видимость: <span id="currentVisibilityValue">8.713</span> км</div>
+                    <div id="currentUVI">УФ индекс: <span id="currentUVIValue">0</span></div>
+                </div>
             </div>
-            <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ПЛЕАЗЕ</div>
-            <hr>
-            <div class="nextDay" id="day2" style="display: none;">
-               <span class="dayDate" id="day2Date">чт, 10 дек.</span>
-               <img id="day2Icon" src="http://openweathermap.org/img/wn/01d.png">
-               <br><span id="day2MinTemp">-9</span> °C..<span id="day2MaxTemp">-6</span> °C
-           </div>
-           <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ВАЙТ</div>
-            <hr>
-            <div class="nextDay" id="day3" style="display: none;">
-                <span class="dayDate" id="day3Date">пт, 11 дек.</span>
-                <img id="day3Icon" src="http://openweathermap.org/img/wn/03d.png">
-                <br><span id="day3MinTemp">-11</span> °C..<span id="day3MaxTemp">-9</span> °C
+            <div class="currentConditions_placeholder" style="min-width: 550px; min-height: 231px; display: none;">
+                <p>ПОЖАЛУСТО, ПАДОЖДИТЕ</p>
+                <p>ЗАГРУЖОВЫВАВЫЮ ДАТУ</p>
+                <p>.....</p>
             </div>
-            <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ЛОАДИНГ</div>
             <hr>
-            <div class="nextDay" id="day4" style="display: none;">
-                <span class="dayDate" id="day4Date">сб, 12 дек.</span>
-                <img id="day4Icon" src="http://openweathermap.org/img/wn/04d.png">
-                <br><span id="day4MinTemp">-10</span> °C..<span id="day4MaxTemp">-8</span> °C
+            <div class="nextDays">
+                <div class="nextDay" id="day1" style="">
+                    <span class="dayDate" id="day1Date">пт, 11 дек.</span>
+                    <img id="day1Icon" src="http://openweathermap.org/img/wn/04d.png">
+                    <br><span id="day1MinTemp">-38</span> °C..<span id="day1MaxTemp">-31</span> °C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px; display: none;">ПЛЕАЗЕ</div>
+                <hr>
+                <div class="nextDay" id="day2" style="">
+                    <span class="dayDate" id="day2Date">сб, 12 дек.</span>
+                    <img id="day2Icon" src="http://openweathermap.org/img/wn/02d.png">
+                    <br><span id="day2MinTemp">-40</span> °C..<span id="day2MaxTemp">-37</span> °C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px; display: none;">ВАЙТ</div>
+                <hr>
+                <div class="nextDay" id="day3" style="">
+                    <span class="dayDate" id="day3Date">вс, 13 дек.</span>
+                    <img id="day3Icon" src="http://openweathermap.org/img/wn/04d.png">
+                    <br><span id="day3MinTemp">-39</span> °C..<span id="day3MaxTemp">-31</span> °C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px; display: none;">ЛОАДИНГ</div>
+                <hr>
+                <div class="nextDay" id="day4" style="">
+                    <span class="dayDate" id="day4Date">пн, 14 дек.</span>
+                    <img id="day4Icon" src="http://openweathermap.org/img/wn/13d.png">
+                    <br><span id="day4MinTemp">-30</span> °C..<span id="day4MaxTemp">-22</span> °C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px; display: none;">ДАТА</div>
+                <hr>
+                <div class="nextDay" id="day5" style="">
+                    <span class="dayDate" id="day5Date">вт, 15 дек.</span>
+                    <img id="day5Icon" src="http://openweathermap.org/img/wn/13d.png">
+                    <br><span id="day5MinTemp">-28</span> °C..<span id="day5MaxTemp">-21</span> °C
+                </div>
+                <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px; display: none;">.........</div>
             </div>
-            <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">ДАТА</div>
-            <hr>
-            <div class="nextDay" id="day5" style="display: none;">
-                <span class="dayDate" id="day5Date">вс, 13 дек.</span>
-                <img id="day5Icon" src="http://openweathermap.org/img/wn/04d.png">
-                <br><span id="day5MinTemp">-11</span> °C..<span id="day5MaxTemp">-8</span> °C
-            </div>
-            <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">...</div>
-        </div>
-    
+        
     </div>
 
-</body></html>
+
+</body>
+
+</html>

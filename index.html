@@ -7,34 +7,41 @@
     <title>Погода</title>
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet"> -->
 </head>
 
 <body>
     <div class="weatherWidget">
-            <div class="currentConditions" style="display: none">
-                <div id="currentCity"></div>
-                <div id="currentStateRegion"></div>
+        <div id="currentCity"></div>
+        <div id="currentStateRegion"></div>
+        <div class="currentConditions">
+            <div class="mainParameters">
                 <div class="icon_and_temp">
                     <span id="currentWeatherIcon"></span>
                     <div id="currentTemperature"><span id="currentTemperatureValue"></span> &#176C</div>
                     <div id="currentTemperatureFeelsLike">Ощущается как: <span id="currentTemperatureFeelsLikeValue"></span> &#176C</div>
                 </div>
-                <div id="additional_parameters">
-                    <hr>
-                    <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue"></span> %</div>
-                    <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue"></span> гПа</div>
-                    <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue"></span> м/с</div>
-                    <div id="currentVisibility">Видимость: <span id="currentVisibilityValue"></span> км</div>
-                    <div id="currentUVI">УФ индекс: <span id="currentUVIValue"></span></div>
+            </div>
+            <div class="topRight">
+                <div class="spacer"></div>
+                <div class="additionalParametersContainer">
+                    <div class="additional_parameters">
+                        <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue"></span> %</div>
+                        <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue"></span> мм рт. ст.</div>
+                        <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue"></span> м/с</div>
+                        <div id="currentVisibility">Видимость: <span id="currentVisibilityValue"></span> км</div>
+                        <div id="currentUVI">УФ индекс: <span id="currentUVIValue"></span></div>
+                    </div>
                 </div>
             </div>
-            <div class="currentConditions_placeholder" style="min-width: 550px; min-height: 231px;">
-                <p>ПОЖАЛУСТО, ПАДОЖДИТЕ</p>
-                <p>ЗАГРУЖОВЫВАВЫЮ ДАТУ</p>
-                <p>.....</p>
-            </div>
+        </div>
+        <div class="currentConditions_placeholder" style="min-width: 550px; min-height: 231px;">
+            <p>ПОЖАЛУСТО, ПАДОЖДИТЕ</p>
+            <p>ЗАГРУЖОВЫВАВЫЮ ДАТУ</p>
+            <p>.....</p>
+        </div>
+        <div class="bottom">
             <hr>
             <div class="nextDays">
                 <div class="nextDay" id="day1"  style="display: none">
@@ -72,7 +79,7 @@
                 </div>
                 <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px;">.........</div>
             </div>
-        
+        </div>
     </div>
 </body>
 

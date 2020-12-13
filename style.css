@@ -10,7 +10,7 @@
 
 @keyframes moveIn {
     from {
-        transform: translate(0, 100%);
+        transform: translate(0, -100%);
         opacity: 0;
     }
 
@@ -20,9 +20,33 @@
     }
 }
 
+@keyframes moveInRightToLeft {
+    from {
+        transform: translate(20%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes moveInLeftToRight {
+    from {
+        transform: translate(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translate(0%);
+        opacity: 1;
+    }
+}
 
 .weatherWidget {
-    width: 550px;
+    max-width: 550px;
+    width: fit-content;
     margin: auto;
     background: linear-gradient(45deg, #EECFBA, #C5DDE8);
     border-radius: 20px;
@@ -34,8 +58,37 @@
     
 }
 
+.topRight {
+    display: inline-flex;
+}
+
+.additionalParametersContainer {
+    overflow: hidden;
+    margin-top: auto;
+}
+
 .currentConditions {
     animation: fadeIn 1s linear 0s;
+    display: inline-flex;
+    width: 100%;
+}
+
+.mainParameters {
+    width: 50%;
+    animation: fadeIn 1.5s ease-in-out;
+    overflow: hidden;
+}
+
+.spacer {
+    /* margin-top: auto; */
+    padding: 15px;
+    /* text-align: left; */
+    /* width: 85%; */
+    border-left: solid 1px;
+    border-color: darkgray;
+    /* animation: moveInLeftToRight 1s ease-in-out; */
+    /* overflow: hidden; */
+
 }
 
 .icon_and_temp{
@@ -44,14 +97,30 @@
 
 #currentCity{  
     font-size: x-large;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+#currentStateRegion{
+    opacity: 0;  
+    animation: fadeIn 1s 0.2s ease-in-out forwards;
 }
 
 #currentTemperature{
     font-size: 3.5em;
 }
 
-#additional_parameters{
-    display: none;
+.additional_parameters{
+    /* display: none; */
+    margin-top: auto;
+    /* padding-left: 15px; */
+    text-align: left;
+    /* width: 85%; */
+    /* border-left: solid 1px; */
+    /* border-color: darkgray; */
+    animation: moveInLeftToRight 1s ease-in-out;
+    overflow: hidden;
+    font-size: smaller;
 }
 
 .nextDays{

@@ -8,7 +8,7 @@ function decodeWeather(weatherData){
         document.getElementById("currentTemperatureValue").innerHTML = Math.round(dataAsJSON.current.temp)
         document.getElementById("currentTemperatureFeelsLikeValue").innerHTML = Math.round(dataAsJSON.current.feels_like)
         document.getElementById("currentHumidityValue").innerHTML = dataAsJSON.current.humidity
-        document.getElementById("currentPressureValue").innerHTML = dataAsJSON.current.pressure
+        document.getElementById("currentPressureValue").innerHTML = Math.round(dataAsJSON.current.pressure / 1.333)
         document.getElementById("currentWindSpeedValue").innerHTML = dataAsJSON.current.wind_speed
         document.getElementById("currentVisibilityValue").innerHTML = dataAsJSON.current.visibility / 1000
         document.getElementById("currentUVIValue").innerHTML = dataAsJSON.current.uvi

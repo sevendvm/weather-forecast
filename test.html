@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    
     <div class="weatherWidget">
         <div id="currentCity">Красноярск</div>
         <div id="currentStateRegion">Россия, Красноярский край</div>
@@ -24,15 +25,17 @@
                             id="currentTemperatureFeelsLikeValue">-43</span> °C</div>
                 </div>
             </div>
-            <div class="spacer"></div>
-            <div class="additionalParametersContainer">
-                <div class="additional_parameters">
-                    <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue">83</span> %</div>
-                    <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue">776</span> мм рт.
-                        ст.</div>
-                    <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue">1.34</span> м/с</div>
-                    <div id="currentVisibility">Видимость: <span id="currentVisibilityValue">8.713</span> км</div>
-                    <div id="currentUVI">УФ индекс: <span id="currentUVIValue">0</span></div>
+            <div class="topRight">
+                <div class="spacer"></div>
+                <div class="additionalParametersContainer">
+                    <div class="additional_parameters">
+                        <div id="currentHumidity">Относительная влажность: <span id="currentHumidityValue">83</span> %</div>
+                        <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue">776</span> мм рт.
+                            ст.</div>
+                        <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue">1.34</span> м/с</div>
+                        <div id="currentVisibility">Видимость: <span id="currentVisibilityValue">8.713</span> км</div>
+                        <div id="currentUVI">УФ индекс: <span id="currentUVIValue">0</span></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,6 +72,12 @@
                 <span class="dayDate" id="day4Date">пн, 14 дек.</span>
                 <img id="day4Icon" src="http://openweathermap.org/img/wn/13d.png">
                 <br><span id="day4MinTemp">-30</span> °C..<span id="day4MaxTemp">-22</span> °C
+                <div class="nexDay add" style="font-size: small; text-align: left;">
+                    <br>Утром: -26 °C
+                    <br>Днём: -22 °C
+                    <br>Вечером: -28 °C
+                    <br>Ночью: -30 °C
+                </div>
             </div>
             <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px; display: none;">ДАТА</div>
             <hr>
@@ -80,10 +89,15 @@
             <div class="nextDay_placeholder" style="min-width: 108px; min-height: 100px; display: none;">.........</div>
         </div>
         </div>
+        <button type="button" class="btn" id="toggleWidget">&gt;</button>
     </div>
 
-    <input type="checkbox" id="showAdditionalParameters" ="Hello">
-
+ 
+    <div class="options hidden" style="margin-top: 50px">
+        <input type="checkbox" id="showAdditionalParameters" value="yes" checked>
+        <label for="showAdditionalParameters">Показывать дополнительные параметры погоды</label> 
+    </div>
+    <script src="checkboxes.js"></script>
 </body>
 
 </html>

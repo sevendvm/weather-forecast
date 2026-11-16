@@ -2,6 +2,7 @@ const weatherURL = "https://api.openweathermap.org/data/2.5/weather?units=metric
 const forecastURL = "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=" + WEATHER_API_KEY
 const cityLookupURL = "https://nominatim.openstreetmap.org/reverse?format=json&zoom=10&accept-language=ru"
 const weatherIconURL = "https://openweathermap.org/img/wn/"
+const HPA_TO_MMHG = 1.333
 
 function checkResponse(response) {
     if (!response.ok) {
@@ -24,24 +25,18 @@ function revealCurrentConditions() {
     document.querySelector(".currentConditions").style = null
 }
 
-function revealForecast() {
-    document.querySelectorAll(".nextDay_placeholder").forEach((element) => {
-        element.style.display = 'none'
-    })
-    document.querySelectorAll(".nextDay").forEach((element) => {
-        element.style = null
-    })
-}
-
 function decodeWeather(weatherData){
     weatherData.json().then(dataAsJSON => {
-        document.getElementById("currentWeatherIcon").appendChild(document.createElement("img")).src = weatherIconURL+dataAsJSON.weather[0].icon+"@2x.png"
-        document.getElementById("currentTemperatureValue").innerHTML = Math.round(dataAsJSON.main.temp)
-        document.getElementById("currentTemperatureFeelsLikeValue").innerHTML = Math.round(dataAsJSON.main.feels_like)
-        document.getElementById("currentHumidityValue").innerHTML = dataAsJSON.main.humidity
-        document.getElementById("currentPressureValue").innerHTML = Math.round(dataAsJSON.main.pressure / 1.333)
-        document.getElementById("currentWindSpeedValue").innerHTML = dataAsJSON.wind.speed
-        document.getElementById("currentVisibilityValue").innerHTML = dataAsJSON.visibility / 1000
+        const currentIcon = document.createElement("img")
+        currentIcon.src = `${weatherIconURL}${dataAsJSON.weather[0].icon}@2x.png`
+        currentIcon.alt = dataAsJSON.weather[0].description
+        document.getElementById("currentWeatherIcon").appendChild(currentIcon)
+        document.getElementById("currentTemperatureValue").textContent = Math.round(dataAsJSON.main.temp)
+        document.getElementById("currentTemperatureFeelsLikeValue").textContent = Math.round(dataAsJSON.main.feels_like)
+        document.getElementById("currentHumidityValue").textContent = dataAsJSON.main.humidity
+        document.getElementById("currentPressureValue").textContent = Math.round(dataAsJSON.main.pressure / HPA_TO_MMHG)
+        document.getElementById("currentWindSpeedValue").textContent = dataAsJSON.wind.speed
+        document.getElementById("currentVisibilityValue").textContent = Math.round(dataAsJSON.visibility / 1000)
 
         revealCurrentConditions()
     }).catch(() => showError("Не удалось обработать данные о погоде"))
@@ -60,30 +55,38 @@ function decodeForecast(forecastData){
                 day.min = Math.min(day.min, entry.main.temp_min)
                 day.max = Math.max(day.max, entry.main.temp_max)
             } else {
-                days.set(dayKey, { date: entryDate, min: entry.main.temp_min, max: entry.main.temp_max, icon: entry.weather[0].icon })
+                days.set(dayKey, { date: entryDate, min: entry.main.temp_min, max: entry.main.temp_max, icon: entry.weather[0].icon, description: entry.weather[0].description })
             }
         })
 
+        const dayTemplate = document.getElementById("nextDayTemplate")
+        const placeholders = document.querySelectorAll(".nextDay_placeholder")
         let index = 0
         days.forEach(day => {
-            if (index >= 5) { return }
-            document.getElementById("day"+(index+1)+"Date").innerHTML = new Intl.DateTimeFormat('ru-RU', options).format(day.date)
-            document.getElementById("day"+(index+1)+"MinTemp").innerHTML = Math.round(day.min)
-            document.getElementById("day"+(index+1)+"MaxTemp").innerHTML = Math.round(day.max)
-            document.getElementById("day"+(index+1)+"Icon").src = weatherIconURL+day.icon+".png"
+            if (index >= placeholders.length) { return }
+            const dayElement = dayTemplate.content.firstElementChild.cloneNode(true)
+            dayElement.id = "day"+(index+1)
+            dayElement.querySelector(".dayDate").textContent = new Intl.DateTimeFormat('ru-RU', options).format(day.date)
+            dayElement.querySelector(".dayMinTemp").textContent = Math.round(day.min)
+            dayElement.querySelector(".dayMaxTemp").textContent = Math.round(day.max)
+            const dayIcon = dayElement.querySelector(".dayIcon")
+            dayIcon.src = weatherIconURL+day.icon+".png"
+            dayIcon.alt = day.description
+            placeholders[index].replaceWith(dayElement)
             index++
         })
-
-        revealForecast()
+        for (; index < placeholders.length; index++) {
+            placeholders[index].style.display = 'none'
+        }
     }).catch(() => showError("Не удалось обработать прогноз погоды"))
 }
 
 function decodeCity(cityData){
     cityData.json().then(dataAsJSON => {
         const cityName = dataAsJSON.address.city
-        document.getElementById("currentCity").innerHTML = cityName
-        document.title = 'Погода в '+cityName
-        document.getElementById("currentStateRegion").innerHTML = dataAsJSON.address.country+", "+dataAsJSON.address.state
+        document.getElementById("currentCity").textContent = cityName
+        document.title = `Погода в ${cityName}`
+        document.getElementById("currentStateRegion").textContent = dataAsJSON.address.country+", "+dataAsJSON.address.state
     }).catch(() => showError("Не удалось обработать данные о местоположении"))
 }
 
@@ -92,17 +95,17 @@ function getWeatherData() {
         const lat = position.coords.latitude
         const lon = position.coords.longitude
 
-        fetch(weatherURL + "&lat=" + lat + "&lon=" + lon)
+        fetch(`${weatherURL}&lat=${lat}&lon=${lon}`)
             .then(checkResponse)
             .then(decodeWeather)
             .catch(() => showError("Не удалось загрузить данные о погоде"))
 
-        fetch(forecastURL + "&lat=" + lat + "&lon=" + lon)
+        fetch(`${forecastURL}&lat=${lat}&lon=${lon}`)
             .then(checkResponse)
             .then(decodeForecast)
             .catch(() => showError("Не удалось загрузить прогноз погоды"))
 
-        fetch(cityLookupURL + "&lat=" + lat + "&lon=" + lon)
+        fetch(`${cityLookupURL}&lat=${lat}&lon=${lon}`)
             .then(checkResponse)
             .then(decodeCity)
             .catch(() => showError("Не удалось определить город"))

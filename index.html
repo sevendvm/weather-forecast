@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Погода</title>
+    <script src="./config.js"></script>
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
@@ -31,7 +32,6 @@
                         <div id="currentPressure">Атмосферное давление: <span id="currentPressureValue"></span> мм рт. ст.</div>
                         <div id="currentWindSpeed">Скорость ветра: <span id="currentWindSpeedValue"></span> м/с</div>
                         <div id="currentVisibility">Видимость: <span id="currentVisibilityValue"></span> км</div>
-                        <div id="currentUVI">УФ индекс: <span id="currentUVIValue"></span></div>
                     </div>
                 </div>
             </div>
@@ -41,6 +41,7 @@
             <p>ЗАГРУЖОВЫВАВЫЮ ДАТУ</p>
             <p>.....</p>
         </div>
+        <div class="errorMessage" style="display: none;"></div>
         <div class="bottom">
             <hr>
             <div class="nextDays">

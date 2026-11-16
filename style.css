@@ -70,6 +70,11 @@ body{
     margin-top: auto;
 }
 
+.errorMessage{
+    color: darkred;
+    padding: 20px;
+}
+
 .currentConditions {
     animation: fadeIn 1s linear 0s;
     display: inline-flex;
